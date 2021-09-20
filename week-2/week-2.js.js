@@ -13,7 +13,18 @@
 
 // sortByLength([]) ➞ []
 
-function sortByLength(){}
+function sortByLength(arr){
+    for( i=0; i<arr.length-i;i++){
+     for (j=0; i<arr.length;j){
+         if(arr[j].length>arr[j+1].length){
+             let x=arr[j];
+             arr[j+1]=arr[j];
+             arr[j]=x;
+         }
+     }
+    }
+    return arr;
+    }
 
 
 
@@ -23,17 +34,30 @@ function sortByLength(){}
 
 // Assume that the following array of drink objects needs to be sorted:
 
+// Examples
+
 // drinks = [
 //   {name: "lemonade", price: 50},
 //   {name: "lime", price: 10}
 // ]
 // The output of the sorted drinks object will be:
 
-// Examples
+
 
 // sortDrinkByPrice(drinks) ➞ [{name: "lime", price: 10}, {name: "lemonade", price: 50}]
 
-function sortDrinkByPrice(){}
+function sortDrinkByPrice(arr=[]){
+    for(i in arr){
+        for(j in arr)
+        if(arr[i]["price"]<arr[j]["price"]){
+           let x=arr[i];
+           arr[i] =arr[j];
+           arr[j]=x;
+        }
+    
+    }
+   return arr
+}
 
 
 
@@ -49,7 +73,13 @@ function sortDrinkByPrice(){}
 // Notes
 // Return an empty array if the object is empty.
 
-function toArray(){}
+function toArray(obj){
+    let list=[];
+    for(i in obj){ 
+    list.push([i,obj[i]])
+    }
+    return list;
+    }
 
 // Q4
 // Create a function that takes an object and returns the keys and values as separate arrays. Return the keys sorted alphabetically, and their corresponding values in the same order.
@@ -66,7 +96,17 @@ function toArray(){}
 // Notes
 // Remember to sort the keys.
 
-function keysAndValues(){}
+function toArray(obj){
+    let key=[];
+    let value=[];
+    let list=[];
+    for(i in obj){ 
+    key.push(i);
+    value.push(obj[i])
+    }
+    list.push(key,value)
+    return list;
+    }
 
 
 // Q5
@@ -87,7 +127,35 @@ function keysAndValues(){}
 // The 11th century is between 1001 and 1100.
 // The 18th century is between 1701-1800.
 
-function century(){}
+function century(numbar){
+    let cen=numbar-1000;
+let map={
+    "1":"12th century",
+    "2":"13th century",
+   "3":"14th century",
+    "4":"15th century",
+    "5":"16th century",
+    "6":"17th century",
+    "7":"18th century",
+    "8":"19th century",
+    "9":"20th century",
+    
+};
+if(numbar>2010||numbar<1000){
+    return "error"
+}
+
+if(cen<100){
+    return "11th century"
+}else if(cen>=1000){
+  return "21th century";
+}else{
+    cen=cen/100
+    let x=cen.toString()
+    return map[x[0]];
+}
+
+}
 
 // Q6
 // Number of Arrays in an Array
@@ -101,7 +169,15 @@ function century(){}
 // numOfSubbarrays([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]]) ➞ 4
 
 // numOfSubbarrays([1, 2, 3]) ➞ 0
-function numOfSubbarrays(){}
+function numOfSubbarrays(arr){
+    let sum=0
+    for (i of arr){
+        if(typeof(i)=="object"){
+            sum+=1;
+        }
+    }
+    return sum;
+}
 
 
 // Q7
@@ -116,7 +192,15 @@ function numOfSubbarrays(){}
 // numbersSum([1, 2, 3, 4, 5, true]) ➞ 15
 
 
-function numbersSum(){}
+function numOfSubbarrays(arr){
+    let sum=0
+    for (i of arr){
+        if(typeof(i)=="number"){
+            sum+=i;
+        }
+    }
+    return sum;
+}
 
 
 
@@ -126,4 +210,22 @@ function numbersSum(){}
 // ex: console.log(isMultiplesOfTwo(513))     output: false
 // ex: console.log(isMultiplesOfTwo(255))     output: false
 
-function isMultiplesOfTwo(num)
+function isMultiplesOfTwo(num){
+    if(number%2==0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+
+//Q9................................................................
+
+function leftRotation(numOfLeft,arr){
+    for(i=0; i<numOfLeft;i++){
+      arr.push(arr[0]);
+      arr.shift(arr[0]);
+    }
+   return arr;
+   }
